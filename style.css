@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fefce8, #e0f2fe);
+}
+
+.container {
+  display: flex;
+  width: 600vw;
+  transition: transform 1s ease-in-out;
+}
+
+.screen {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.4;
+  transition: opacity 1s;
+}
+
+.screen.active {
+  opacity: 1;
+}
+
+button {
+  margin: 10px;
+  padding: 12px 20px;
+  border-radius: 20px;
+  border: none;
+  background: #dbeafe;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.fade-text {
+  animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+}
+
+/* Hidden Message */
+.hidden-msg {
+  margin-top: 20px;
+  cursor: pointer;
+  color: transparent;
+}
+.hidden-msg:hover {
+  color: #999;
+}
