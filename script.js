@@ -3,7 +3,10 @@ let screens = document.querySelectorAll(".screen");
 let container = document.querySelector(".container");
 let started = false;
 
+// ======================
 // SCREEN NAVIGATION
+// ======================
+
 function nextScreen() {
   if (!started) {
     started = true;
@@ -16,16 +19,59 @@ function nextScreen() {
   }
 }
 
+function prevScreen() {
+  if (current > 0) {
+    current--;
+    updateScreen();
+  }
+}
+
 function updateScreen() {
   container.style.transform = `translateX(-${current * 100}vw)`;
 
   screens.forEach(s => s.classList.remove("active"));
   screens[current].classList.add("active");
 
-  changeMusic(screens[current].dataset.music);
+  changeMusic(Number(screens[current].dataset.music));
 }
 
+// ======================
+// CLICK ANYWHERE NAVIGATION
+// ======================
+
+document.addEventListener("click", (e) => {
+  if (
+    !e.target.closest("button") &&
+    !e.target.closest(".modal-content")
+  ) {
+    nextScreen();
+  }
+});
+
+// ======================
+// SWIPE SUPPORT (MOBILE)
+// ======================
+
+let startX = 0;
+
+document.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
+
+document.addEventListener("touchend", (e) => {
+  let endX = e.changedTouches[0].clientX;
+
+  if (startX - endX > 50) {
+    nextScreen(); // swipe left
+  } else if (endX - startX > 50) {
+    prevScreen(); // swipe right
+  }
+});
+
+// ======================
 // MODAL
+// ======================
+
 function openModal(type) {
   let content = {
     overthinking: "Not every thought is true. You can pause.",
@@ -40,26 +86,32 @@ document.getElementById("modal").onclick = () => {
   document.getElementById("modal").style.display = "none";
 };
 
+// ======================
 // HIDDEN MESSAGE
+// ======================
+
 function revealSecret() {
   alert("I still care about you. Quietly.");
 }
 
-// MUSIC SYSTEM
+// ======================
+// MUSIC SYSTEM (FIXED)
+// ======================
+
 let tracks = [
   new Audio("music/music1.mp3"),
   new Audio("music/music2.mp3"),
   new Audio("music/music3.mp3"),
-  new Audio("music/music4.mp3"),
-  new Audio("music/music5.mp3")
+  new Audio("music/music4.mp3")
 ];
 
 tracks.forEach(track => {
   track.loop = true;
-  track.volume = 0.6;
+  track.volume = 0;
 });
 
 let currentTrack = null;
+let fadeInterval = null;
 
 function changeMusic(index) {
   let next = tracks[index];
@@ -68,22 +120,24 @@ function changeMusic(index) {
   next.currentTime = currentTrack ? currentTrack.currentTime : 0;
   next.play();
 
+  if (fadeInterval) clearInterval(fadeInterval);
+
   let fadeDuration = 1000;
   let step = 50;
   let steps = fadeDuration / step;
-  let volumeStep = 1 / steps;
+  let volumeStep = 0.6 / steps; // max volume = 0.6
 
-  let fade = setInterval(() => {
+  fadeInterval = setInterval(() => {
     if (currentTrack && currentTrack.volume > 0) {
       currentTrack.volume = Math.max(0, currentTrack.volume - volumeStep);
     }
 
-    if (next.volume < 1) {
-      next.volume = Math.min(1, next.volume + volumeStep);
+    if (next.volume < 0.6) {
+      next.volume = Math.min(0.6, next.volume + volumeStep);
     }
 
-    if (next.volume >= 1) {
-      clearInterval(fade);
+    if (next.volume >= 0.6) {
+      clearInterval(fadeInterval);
       if (currentTrack) currentTrack.pause();
       currentTrack = next;
     }
