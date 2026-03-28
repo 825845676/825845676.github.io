@@ -40,12 +40,12 @@ function updateScreen() {
 // ======================
 
 document.addEventListener("click", (e) => {
-  if (
-    !e.target.closest("button") &&
-    !e.target.closest(".modal-content")
-  ) {
-    nextScreen();
-  }
+  const isButton = e.target.closest("button");
+  const isModal = e.target.closest(".modal-content");
+
+  if (isButton || isModal) return;
+
+  nextScreen();
 });
 
 // ======================
