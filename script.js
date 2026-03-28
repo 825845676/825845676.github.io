@@ -1,9 +1,15 @@
 let current = 0;
 let screens = document.querySelectorAll(".screen");
 let container = document.querySelector(".container");
+let started = false;
 
 // SCREEN NAVIGATION
 function nextScreen() {
+  if (!started) {
+    started = true;
+    changeMusic(0);
+  }
+
   if (current < screens.length - 1) {
     current++;
     updateScreen();
@@ -45,27 +51,41 @@ let tracks = [
   new Audio("music/music2.mp3"),
   new Audio("music/music3.mp3"),
   new Audio("music/music4.mp3"),
-  new Audio("music/music5.mp3"),
-  new Audio("music/music6.mp3")
+  new Audio("music/music5.mp3")
 ];
+
+tracks.forEach(track => {
+  track.loop = true;
+  track.volume = 0;
+});
 
 let currentTrack = null;
 
 function changeMusic(index) {
   let next = tracks[index];
-  if (!next) return;
+  if (!next || next === currentTrack) return;
 
-  next.volume = 0;
+  next.currentTime = 0;
   next.play();
 
+  let fadeDuration = 1000;
+  let step = 50;
+  let steps = fadeDuration / step;
+  let volumeStep = 1 / steps;
+
   let fade = setInterval(() => {
-    if (currentTrack) currentTrack.volume -= 0.05;
-    next.volume += 0.05;
+    if (currentTrack && currentTrack.volume > 0) {
+      currentTrack.volume = Math.max(0, currentTrack.volume - volumeStep);
+    }
+
+    if (next.volume < 1) {
+      next.volume = Math.min(1, next.volume + volumeStep);
+    }
 
     if (next.volume >= 1) {
       clearInterval(fade);
       if (currentTrack) currentTrack.pause();
       currentTrack = next;
     }
-  }, 200);
+  }, step);
 }
