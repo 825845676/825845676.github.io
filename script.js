@@ -56,7 +56,7 @@ let tracks = [
 
 tracks.forEach(track => {
   track.loop = true;
-  track.volume = 0;
+  track.volume = 0.6;
 });
 
 let currentTrack = null;
@@ -65,7 +65,7 @@ function changeMusic(index) {
   let next = tracks[index];
   if (!next || next === currentTrack) return;
 
-  next.currentTime = 0;
+  next.currentTime = currentTrack ? currentTrack.currentTime : 0;
   next.play();
 
   let fadeDuration = 1000;
