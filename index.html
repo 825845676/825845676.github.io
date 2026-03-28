@@ -11,41 +11,71 @@
 
 <div class="container">
 
+  <!-- SCREEN 1 -->
   <div class="screen active" data-music="0">
     <h2>Hey…</h2>
-    <p>This isn’t something you have to go through all at once.</p>
-    <button onclick="nextScreen()">Start</button>
-    <button onclick="alert('working')">Test Button</button>
+    <p>There’s no right time for this… just something I wanted to share.</p>
+
+    <button onclick="nextScreen()">Start →</button>
   </div>
 
+  <!-- SCREEN 2 -->
   <div class="screen" data-music="1">
     <h2>What I Never Said</h2>
     <p class="fade-text">I felt too much… and said too little.</p>
+
+    <div class="nav-buttons">
+      <button onclick="prevScreen()">← Back</button>
+      <button onclick="nextScreen()">Next →</button>
+    </div>
   </div>
 
+  <!-- SCREEN 3 -->
   <div class="screen" data-music="2">
     <h2>What I Understood</h2>
     <p>Love also means space… not just closeness.</p>
+
+    <div class="nav-buttons">
+      <button onclick="prevScreen()">← Back</button>
+      <button onclick="nextScreen()">Next →</button>
+    </div>
   </div>
 
+  <!-- SCREEN 4 -->
   <div class="screen" data-music="2">
     <h2>A Place For You</h2>
-    <button onclick="openModal('overthinking')">Overthinking</button>
-    <button onclick="openModal('low')">Feeling Low</button>
+
+    <div>
+      <button onclick="openModal('overthinking')">Overthinking</button>
+      <button onclick="openModal('low')">Feeling Low</button>
+    </div>
+
+    <div class="nav-buttons">
+      <button onclick="prevScreen()">← Back</button>
+      <button onclick="nextScreen()">Next →</button>
+    </div>
   </div>
 
+  <!-- SCREEN 5 -->
   <div class="screen" data-music="3">
     <h2>No Expectations</h2>
     <p>You don’t owe me anything.</p>
+
     <span class="hidden-msg" onclick="revealSecret()">•</span>
+
+    <div class="nav-buttons">
+      <button onclick="prevScreen()">← Back</button>
+    </div>
   </div>
 
 </div>
 
+<!-- MODAL -->
 <div class="modal" id="modal">
   <div class="modal-content" id="modalContent"></div>
 </div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
