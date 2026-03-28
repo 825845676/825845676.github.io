@@ -140,12 +140,13 @@ button:hover {
   margin-top: 20px;
   cursor: pointer;
   font-size: 18px;
-  color: transparent;
+  color: rgb(18, 194, 231);
+  opacity: 0.4;
   transition: 0.3s;
 }
 
 .hidden-msg:hover {
-  color: #94a3b8;
+  opacity: 1;
 }
 
 /* Mute/Unmute toggle */
