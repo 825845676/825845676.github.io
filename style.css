@@ -3,7 +3,7 @@ body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   overflow: hidden;
-  background: linear-gradient(135deg, #fefce8, #e0f2fe);
+  background: linear-gradient(130deg, #fefce8, #e0f2fe);
   color: #334155;
 }
 
@@ -69,7 +69,7 @@ button {
 }
 
 button:hover {
-  transform: scale(1.08);
+  transform: scale(1.09);
   background: rgba(255, 255, 255, 0.9);
 }
 
@@ -83,7 +83,7 @@ button:hover {
 
 /* FADE TEXT */
 .fade-text {
-  animation: fadeIn 2s ease forwards;
+  animation: fadeIn 1.5s ease forwards;
 }
 
 @keyframes fadeIn {
