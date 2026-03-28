@@ -1,80 +1,160 @@
+/* RESET */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   overflow: hidden;
   background: linear-gradient(135deg, #fefce8, #e0f2fe);
+  color: #334155;
 }
 
+/* CONTAINER */
 .container {
   display: flex;
-  width: 600vw;
-  transition: transform 1s ease-in-out;
+  width: 500vw; /* 5 screens */
+  transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
+/* SCREEN */
 .screen {
   width: 100vw;
   height: 100vh;
   flex-shrink: 0;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  opacity: 0.4;
-  transition: opacity 1s;
+
+  text-align: center;
+  padding: 20px;
+
+  opacity: 0.3;
+  transform: scale(0.96);
+  transition: all 0.8s ease;
 }
 
 .screen.active {
   opacity: 1;
+  transform: scale(1);
 }
 
+/* TEXT STYLING */
+h2 {
+  font-weight: 500;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+p {
+  max-width: 320px;
+  line-height: 1.6;
+  font-size: 16px;
+  opacity: 0.85;
+}
+
+/* BUTTONS */
 button {
-  margin: 10px;
-  padding: 12px 20px;
-  border-radius: 20px;
+  margin: 8px;
+  padding: 12px 22px;
+  border-radius: 25px;
   border: none;
-  background: #dbeafe;
+
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+
   cursor: pointer;
-  transition: 0.3s;
+  font-size: 14px;
+
+  transition: all 0.3s ease;
 }
 
 button:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.9);
 }
 
+/* NAV BUTTONS */
+.nav-buttons {
+  position: absolute;
+  bottom: 40px;
+  display: flex;
+  gap: 10px;
+}
+
+/* FADE TEXT */
 .fade-text {
   animation: fadeIn 2s ease forwards;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Modal */
+/* MODAL */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+
   display: none;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(10px);
+
+  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .modal-content {
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   padding: 25px;
-  border-radius: 15px;
+  border-radius: 20px;
+  max-width: 300px;
+
+  text-align: center;
+
+  animation: popIn 0.4s ease;
 }
 
-/* Hidden Message */
+@keyframes popIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* HIDDEN MESSAGE */
 .hidden-msg {
   margin-top: 20px;
   cursor: pointer;
+  font-size: 18px;
   color: transparent;
+  transition: 0.3s;
 }
+
 .hidden-msg:hover {
-  color: #999;
+  color: #94a3b8;
+}
+
+/* MOBILE IMPROVEMENT */
+@media (max-width: 600px) {
+  h2 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 15px;
+  }
 }
