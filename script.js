@@ -2,6 +2,8 @@ let current = 0;
 let screens = document.querySelectorAll(".screen");
 let container = document.querySelector(".container");
 let started = false;
+let isMuted = false;
+let masterVolume = 0.6;
 
 // ======================
 // SCREEN NAVIGATION
@@ -47,6 +49,26 @@ document.addEventListener("click", (e) => {
 
   nextScreen();
 });
+
+// ======================
+// SOUND TOGGLE
+// ======================
+function toggleMute() {
+  isMuted = !isMuted;
+
+  let btn = document.getElementById("muteBtn");
+
+  if (isMuted) {
+    btn.innerText = "🔇";
+    tracks.forEach(track => track.volume = 0);
+  } else {
+    btn.innerText = "🔊";
+
+    if (currentTrack) {
+      currentTrack.volume = masterVolume;
+    }
+  }
+}
 
 // ======================
 // SWIPE SUPPORT (MOBILE)
@@ -125,18 +147,18 @@ function changeMusic(index) {
   let fadeDuration = 1000;
   let step = 50;
   let steps = fadeDuration / step;
-  let volumeStep = 0.6 / steps; // max volume = 0.6
+  let volumeStep = masterVolume / steps; // max volume = 0.6
 
   fadeInterval = setInterval(() => {
     if (currentTrack && currentTrack.volume > 0) {
       currentTrack.volume = Math.max(0, currentTrack.volume - volumeStep);
     }
 
-    if (next.volume < 0.6) {
-      next.volume = Math.min(0.6, next.volume + volumeStep);
+    if (next.volume < masterVolume) {
+      next.volume = Math.min(masterVolume, next.volume + volumeStep);
     }
 
-    if (next.volume >= 0.6) {
+    if (next.volume >= masterVolume) {
       clearInterval(fadeInterval);
       if (currentTrack) currentTrack.pause();
       currentTrack = next;
