@@ -37,6 +37,14 @@ body {
   transform: scale(1);
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 400px;
+}
+
 /* TEXT STYLING */
 h2 {
   font-weight: 500;
