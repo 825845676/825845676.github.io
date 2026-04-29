@@ -5,27 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Quiet Space</title>
     <style>
-        /* PERFECT BLEND: Warm colors + High readability */
         :root {
-            --bg-primary: #faf8f5;      /* Soft warm cream (original warmth) */
-            --bg-secondary: #fffaf7;    /* Warmer off-white */
-            --text-primary: #2c2c2c;    /* Darker gray (better contrast) */
-            --text-secondary: #5a5a5a;  /* Medium gray */
-            --accent-warm: #c89f6b;     /* Gentle terracotta */
-            --accent-soft: #f0e6d2;     /* Pale gold */
-            --border-color: #e8e4dc;    /* Subtle divider */
-            --card-bg: #fdfcfb;         /* Near-white cards */
+            --bg-primary: #faf8f5;
+            --bg-secondary: #fffaf7;
+            --text-primary: #2c2c2c;
+            --text-secondary: #5a5a5a;
+            --accent-warm: #d4a574;
+            --accent-soft: #e8d5b7;
+            --border-color: #e5e0d8;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Georgia', 'Times New Roman', serif; /* Original warm serif */
-            font-size: 19px;  /* Larger + readable */
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 19px;
             line-height: 1.65;
             color: var(--text-primary);
             background: var(--bg-primary);
@@ -34,54 +28,80 @@
             margin: 0 auto;
         }
 
-        h1 {
+        h1 { 
             font-family: 'Playfair Display', serif;
-            font-size: 2.6em;  /* Large but elegant */
+            font-size: 2.6em;
             font-weight: 400;
-            color: var(--text-primary);
-            margin-bottom: 24px;
-            line-height: 1.15;
+            margin-bottom: 16px;
+            line-height: 1.1;
         }
 
-        h2 {
+        h2 { 
             font-family: 'Playfair Display', serif;
             font-size: 2.1em;
             font-weight: 400;
-            margin: 70px 0 28px 0;
-            color: var(--text-primary);
+            margin: 70px 0 24px 0;
         }
 
-        h3 {
-            font-size: 1.45em;
-            margin-bottom: 18px;
-            color: var(--text-primary);
+        p { margin-bottom: 28px; max-width: 680px; }
+
+        /* HERO IMAGE */
+        .hero-image {
+            width: 100%;
+            height: 320px;
+            border-radius: 20px;
+            margin: 40px 0 60px 0;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
         }
 
-        p {
-            margin-bottom: 28px;  /* Generous spacing */
-            max-width: 680px;
+        .hero-image img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        }
+
+        /* TEXT + IMAGE ROWS EVERYWHERE */
+        .content-row {
+            display: flex;
+            gap: 35px;
+            align-items: flex-start;
+            margin: 30px 0;
+        }
+
+        .text-side { flex: 1; }
+        .image-side {
+            flex: 0 0 240px;
+            height: 180px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .image-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .section {
             margin-bottom: 90px;
             padding: 45px 0;
             border-bottom: 1px solid var(--border-color);
+            opacity: 0;
+            transform: translateY(15px);
+            animation: fadeInUp 0.7s ease forwards;
         }
 
-        .section:last-child {
-            border-bottom: none;
-        }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
-        .intro {
-            text-align: center;
-            padding: 90px 0;
-        }
+        .intro { text-align: center; padding: 90px 0; border-bottom: none; }
 
         .nav-link {
             display: inline-block;
-            background: var(--accent-soft);
+            background: var(--bg-secondary);
             color: var(--text-primary);
-            padding: 15px 30px;
+            padding: 14px 28px;
             text-decoration: none;
             border-radius: 10px;
             font-size: 1.12em;
@@ -95,86 +115,48 @@
             background: var(--accent-warm);
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(200, 159, 107, 0.3);
+            box-shadow: 0 8px 20px rgba(212, 165, 116, 0.3);
         }
 
         .support-subsection {
-            background: var(--card-bg);
-            padding: 30px;
-            margin: 22px 0;
-            border-left: 5px solid var(--accent-warm);
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            background: var(--bg-secondary);
+            padding: 32px;
+            margin: 25px 0;
+            border-left: 6px solid var(--accent-warm);
+            border-radius: 12px;
         }
 
-        .voice-note {
-            font-style: italic;
-            color: var(--text-secondary);
-            font-size: 1em;
-            margin-top: 16px;
-            padding: 16px;
-            background: rgba(200, 159, 107, 0.08);
-            border-radius: 6px;
-            border-left: 3px solid var(--accent-warm);
-        }
-
-        /* Gentle entrance animation */
-        .section {
-            opacity: 0;
-            transform: translateY(15px);
-            animation: fadeInUp 0.7s ease forwards;
-        }
-
-        .section:nth-child(even) { animation-delay: 0.15s; }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Mobile perfection */
+        /* MOBILE */
         @media (max-width: 768px) {
-            body { 
-                padding: 30px 20px; 
-                font-size: 18px; 
-            }
+            body { padding: 30px 20px; font-size: 17px; }
             h1 { font-size: 2.2em; }
             h2 { font-size: 1.85em; }
-            .nav-link { 
-                display: block; 
-                max-width: 320px;
-                margin: 10px auto;
-            }
-            p { font-size: 1.05em; }
-        }
-
-        /* Print friendly */
-        @media print {
-            body { 
-                font-size: 16px; 
-                background: white !important;
-                color: black !important;
-            }
-            .nav-link { display: none; }
-            .voice-note { background: none; }
+            .nav-link { display: block; max-width: 320px; margin: 8px auto; }
+            .hero-image { height: 260px; }
+            .content-row { flex-direction: column; gap: 20px; }
+            .image-side { flex: none; width: 100%; height: 200px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- HOMEPAGE (original warm design + better readability) -->
+    <!-- HOMEPAGE -->
     <section id="home" class="intro section">
         <h1>A Quiet Space</h1>
-        <p style="font-size: 1.25em; max-width: none; margin-bottom: 45px;">
+        <p style="font-size: 1.25em; margin-bottom: 45px;">
             Hi. This is for you, on your birthday.
         </p>
+        
+        <!-- HERO IMAGE -->
+        <div class="hero-image">
+            <!-- REPLACE: <img src="your-hero-photo.jpg" alt="Special moment"> -->
+        </div>
+        
         <p style="font-size: 1.18em;">
-            A few thoughts I've carried. No rush to read. 
-            <br>Take your time, or close this anytime.
+            A few thoughts I've carried. No rush to read. Close anytime.
         </p>
-        <div style="margin-top: 50px;">
+        
+        <div style="margin-top: 55px;">
             <a href="#birthday" class="nav-link">Birthday Wishes</a>
             <a href="#never-said" class="nav-link">What I Never Said Properly</a>
             <a href="#understood" class="nav-link">What I've Understood</a>
@@ -185,89 +167,150 @@
         </div>
     </section>
 
-    <!-- BIRTHDAY SECTION -->
+    <!-- BIRTHDAY -->
     <section id="birthday" class="section">
         <h2>Happy Birthday</h2>
-        <p>I hope this year brings you quiet joys. The kind that settle in softly.</p>
-        <p>May you have space to breathe, people who see you, and moments that feel just right.</p>
+        <div class="content-row">
+            <div class="text-side">
+                <p>I hope this year brings you quiet joys. The kind that settle in softly.</p>
+                <p>May you have space to breathe, people who see you, and moments that feel just right.</p>
+            </div>
+            <div class="image-side">
+                <!-- ADD YOUR IMAGE -->
+            </div>
+        </div>
         <p>You deserve that. Simply.</p>
     </section>
 
-    <!-- WHAT I NEVER SAID PROPERLY -->
+    <!-- NEVER SAID -->
     <section id="never-said" class="section">
         <h2>What I Never Said Properly</h2>
-        <p>I should have listened more when you needed space. Not filled it with my words.</p>
-        <p>Your quiet wasn't empty. It was you processing, feeling deeply. I see that now.</p>
-        <p>And when I got frustrated, it was my own impatience talking. Not a fair measure of you.</p>
+        <div class="content-row">
+            <div class="text-side">
+                <p>I should have listened more when you needed space. Not filled it with my words.</p>
+                <p>Your quiet wasn't empty. It was you processing, feeling deeply. I see that now.</p>
+            </div>
+            <div class="image-side">
+                <!-- ADD YOUR IMAGE -->
+            </div>
+        </div>
     </section>
 
-    <!-- WHAT I'VE UNDERSTOOD -->
+    <!-- UNDERSTOOD -->
     <section id="understood" class="section">
         <h2>What I've Understood</h2>
-        <p>Overthinking isn't a flaw. It's how your mind protects your heart.</p>
-        <p>I've learned to pause before reacting. To give room for feelings to unfold.</p>
+        <div class="content-row">
+            <div class="text-side">
+                <p>Overthinking isn't a flaw. It's how your mind protects your heart.</p>
+                <p>I've learned to pause before reacting. To give room for feelings to unfold.</p>
+            </div>
+            <div class="image-side">
+                <!-- ADD YOUR IMAGE -->
+            </div>
+        </div>
         <p>Relationships need steady ground, not constant motion. I've been working on that steadiness in myself.</p>
     </section>
 
-    <!-- WHAT YOU MEAN TO ME -->
+    <!-- MEANING -->
     <section id="meaning" class="section">
         <h2>What You Mean To Me</h2>
-        <p>The way you notice small details others miss. Like how light shifts in a room.</p>
-        <p>Your laugh when something truly lands. Rare, but real.</p>
-        <p>How you hold space for hard emotions without rushing them away.</p>
-        <p>Those are gifts. Ones I'm grateful for knowing.</p>
+        <div class="content-row">
+            <div class="text-side">
+                <p>The way you notice small details others miss. Like how light shifts in a room.</p>
+                <p>Your laugh when something truly lands. Rare, but real.</p>
+            </div>
+            <div class="image-side">
+                <!-- ADD YOUR IMAGE -->
+            </div>
+        </div>
+        <p>How you hold space for hard emotions without rushing them away. Those are gifts. Ones I'm grateful for knowing.</p>
     </section>
 
-    <!-- A PLACE FOR YOU -->
+    <!-- SUPPORT (NO VOICE NOTES - JUST TEXT + IMAGES) -->
     <section id="support" class="section">
         <h2>A Place For You</h2>
         <p>Some words if you need them. Short anchors for tough moments.</p>
 
         <div class="support-subsection">
-            <h3>When you're overthinking</h3>
-            <p>One thought at a time. This one is enough for now.</p>
-            <p>Your mind is kind, even when it's busy.</p>
-            <p>Breathe. You've got this.</p>
-            <div class="voice-note">[Voice note script: Soft, slow] "One thought at a time. You've got this."</div>
+            <div class="content-row">
+                <div class="text-side">
+                    <h3 style="margin-bottom: 12px;">When you're overthinking</h3>
+                    <p>One thought at a time. This one is enough for now.</p>
+                    <p>Your mind is kind, even when it's busy. Breathe. You've got this.</p>
+                </div>
+                <div class="image-side">
+                    <!-- ADD CALMING IMAGE -->
+                </div>
+            </div>
         </div>
 
         <div class="support-subsection">
-            <h3>When you feel low</h3>
-            <p>This wave will pass. It always does.</p>
-            <p>You're allowed to just be, without fixing.</p>
-            <p>Small steps. Coffee. A walk. That's plenty.</p>
-            <div class="voice-note">[Voice note script: Gentle, reassuring] "This wave will pass. Small steps are enough."</div>
+            <div class="content-row">
+                <div class="text-side">
+                    <h3 style="margin-bottom: 12px;">When you feel low</h3>
+                    <p>This wave will pass. It always does.</p>
+                    <p>You're allowed to just be, without fixing. Small steps. Coffee. A walk. That's plenty.</p>
+                </div>
+                <div class="image-side">
+                    <!-- ADD COMFORT IMAGE -->
+                </div>
+            </div>
         </div>
 
         <div class="support-subsection">
-            <h3>When you miss me</h3>
-            <p>It's okay to feel that. Memories don't need to be pushed away.</p>
-            <p>Let it sit, then let it go when ready.</p>
-            <div class="voice-note">[Voice note script: Calm, steady] "It's okay to feel it. Let it sit, then go."</div>
+            <div class="content-row">
+                <div class="text-side">
+                    <h3 style="margin-bottom: 12px;">When you miss me</h3>
+                    <p>It's okay to feel that. Memories don't need to be pushed away.</p>
+                    <p>Let it sit, then let it go when ready.</p>
+                </div>
+                <div class="image-side">
+                    <!-- ADD MEMORY IMAGE -->
+                </div>
+            </div>
         </div>
 
         <div class="support-subsection">
-            <h3>When you can't sleep</h3>
-            <p>Close your eyes. Name three things you see in the dark.</p>
-            <p>Your breath is steady. Follow it.</p>
-            <p>Tomorrow is new. Rest now.</p>
-            <div class="voice-note">[Voice note script: Whisper-soft, rhythmic] "Name three things. Breath is steady. Rest now."</div>
+            <div class="content-row">
+                <div class="text-side">
+                    <h3 style="margin-bottom: 12px;">When you can't sleep</h3>
+                    <p>Close your eyes. Name three things you see in the dark.</p>
+                    <p>Your breath is steady. Follow it. Tomorrow is new. Rest now.</p>
+                </div>
+                <div class="image-side">
+                    <!-- ADD NIGHT IMAGE -->
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- THINGS I DON'T SAY OFTEN -->
+    <!-- THOUGHTS -->
     <section id="thoughts" class="section">
         <h2>Things I Don't Say Often</h2>
-        <p>I'm proud of how you carry your depth. Quietly, but fully.</p>
-        <p>You've taught me more about patience than anyone.</p>
+        <div class="content-row">
+            <div class="text-side">
+                <p>I'm proud of how you carry your depth. Quietly, but fully.</p>
+                <p>You've taught me more about patience than anyone.</p>
+            </div>
+            <div class="image-side">
+                <!-- ADD YOUR IMAGE -->
+            </div>
+        </div>
         <p>I hope life gives you back the gentleness you give.</p>
     </section>
 
-    <!-- NO EXPECTATIONS -->
+    <!-- EXPECTATIONS -->
     <section id="expectations" class="section">
         <h2>No Expectations</h2>
-        <p>You don't owe a reply. Or any reaction.</p>
-        <p>This is just me sharing, peacefully. For you to have if it helps.</p>
+        <div class="content-row">
+            <div class="text-side">
+                <p>You don't owe a reply. Or any reaction.</p>
+                <p>This is just me sharing, peacefully. For you to have if it helps.</p>
+            </div>
+            <div class="image-side">
+                <!-- FINAL IMAGE -->
+            </div>
+        </div>
         <p style="font-style: italic; color: var(--text-secondary); font-size: 1.12em;">
             Take care. Always.
         </p>
