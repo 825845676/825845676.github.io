@@ -1,92 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For You</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nidhi Sikarwar – A Birthday Reflection | From Dhondudhondi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@400;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        header {
+            text-align: center; padding: 60px 0;
+            animation: fadeIn 1.5s ease-out;
+        }
+        h1 {
+            font-family: 'Playfair Display', serif; font-size: 3.5rem; margin-bottom: 15px;
+            opacity: 0.95; letter-spacing: 2px;
+        }
+        .subtitle { 
+            font-size: 1.3rem; opacity: 0.85; max-width: 600px; margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+        .birthday-countdown {
+            background: rgba(255,255,255,0.12); border-radius: 15px; padding: 25px;
+            backdrop-filter: blur(15px); font-size: 1.1rem; margin: 20px 0;
+        }
+        .growth-section, .memories {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin: 60px 0;
+        }
+        .card {
+            background: rgba(255,255,255,0.1); border-radius: 18px; padding: 30px; text-align: center;
+            backdrop-filter: blur(12px); transition: all 0.4s; border: 1px solid rgba(255,255,255,0.15);
+        }
+        .card:hover { 
+            transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); 
+            border-color: rgba(255,255,255,0.4);
+        }
+        .memory-img { 
+            width: 100%; height: 180px; object-fit: cover; border-radius: 12px; margin-bottom: 20px; 
+        }
+        .reflection {
+            max-width: 850px; margin: 60px auto; background: rgba(255,255,255,0.15); 
+            padding: 45px; border-radius: 22px; backdrop-filter: blur(20px); 
+            line-height: 1.8; text-align: center; font-weight: 300;
+            animation: fadeInUp 2s ease-out 0.3s both;
+        }
+        .cta-section {
+            text-align: center; margin: 70px 0;
+        }
+        .cta-button {
+            display: inline-block; background: rgba(255,255,255,0.2); color: #fff; 
+            padding: 16px 35px; border: 2px solid rgba(255,255,255,0.4); 
+            border-radius: 40px; font-size: 1.1rem; margin: 15px; cursor: pointer; 
+            transition: all 0.3s; text-decoration: none; backdrop-filter: blur(10px);
+        }
+        .cta-button:hover { 
+            background: rgba(255,255,255,0.3); transform: scale(1.05); 
+            border-color: rgba(255,255,255,0.6);
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) { h1 { font-size: 2.8rem; } .reflection { padding: 30px; } }
+    </style>
 </head>
-
 <body>
+    <div class="container">
+        <header>
+            <h1>Hello, Nidhi Sikarwar</h1>
+            <p class="subtitle">A small birthday reflection from someone who's grown a lot since we last spoke. Wishing you all the joy you deserve on May 24th.</p>
+            <div class="birthday-countdown" id="countdown"></div>
+        </header>
 
-<div class="container">
+        <section class="growth-section">
+            <div class="card">
+                <h3>🌱 What I've Learned</h3>
+                <p>Since we parted ways, I've focused on myself—reflecting deeply, picking up new interests, understanding emotions better. You've been part of my growth story.</p>
+            </div>
+            <div class="card">
+                <h3>🙏 Gratitude</h3>
+                <p>Thank you, Nidhi, for the laughs, lessons, and light you brought into my life. No matter what, I'm truly grateful for our time together.</p>
+            </div>
+            <div class="card">
+                <h3>💭 Hopeful Future</h3>
+                <p>Life changes us both. I'd genuinely love to hear how you've been—no expectations, just curiosity about the amazing person you continue to be.</p>
+            </div>
+        </section>
 
-  <!-- SCREEN 1 -->
-  <div class="screen active" data-music="0">
-    <h2>Hey…</h2>
-    <p>There’s no right time for this… just something I wanted to share.</p>
+        <section class="memories">
+            <div class="card">
+                <div class="memory-img" style="background: linear-gradient(45deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; font-size: 3rem;">☕</div>
+                <h3>Our Coffee Moments</h3>
+                <p>Those casual coffee runs and endless conversations... they taught me what real connection feels like.</p>
+            </div>
+            <div class="card">
+                <div class="memory-img" style="background: linear-gradient(45deg, #764ba2, #f093fb); display: flex; align-items: center; justify-content: center; font-size: 3rem;">🌅</div>
+                <h3>Sunset Memories</h3>
+                <p>Watching sunsets together, sharing dreams... simple moments that stay with me.</p>
+            </div>
+            <div class="card">
+                <div class="memory-img" style="background: linear-gradient(45deg, #f093fb, #667eea); display: flex; align-items: center; justify-content: center; font-size: 3rem;">🎶</div>
+                <h3>The Music We Shared</h3>
+                <p>Songs that still play in my mind when I think of the good times we had.</p>
+            </div>
+        </section>
 
-    <button onclick="nextScreen()">Start →</button>
-  </div>
+        <div class="reflection">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 25px;">A Note from Dhondudhondi</h2>
+            <p><strong>Dear Nidhi,</strong></p>
+            <p>Happy 19th Birthday (May 24, 2005 – what a special day). It's been some time since our paths diverged, but I wanted to reach out on your birthday.</p>
+            <p>These past months, I've spent time reflecting and growing—not to revisit the past, but to appreciate it and become better. You've been part of that journey, teaching me about joy, connection, and resilience.</p>
+            <p>No pressure at all. I just wanted you to know I think of you with gratitude and wish you nothing but happiness ahead. If you'd ever like to catch up, hear how life's been treating you, or just exchange a hello—I'm here with an open heart.</p>
+            <p>Wishing you a birthday filled with light, laughter, and all the beautiful things you deserve.<br>
+            <em>Warmly,<br>Dhondudhondi</em></p>
+        </div>
 
-  <!-- SCREEN 2 -->
-  <div class="screen" data-music="1">
-    <div class="content">
-      <h2>What I Never Said</h2>
-      <p class="fade-text">I felt too much… and said too little.</p>
+        <div class="cta-section">
+            <p style="opacity: 0.9; margin-bottom: 30px; font-style: italic;">If this brought a smile, whenever you're ready...</p>
+            <a href="mailto:dhondudhondi@gmail.com?subject=Hey%20from%20Nidhi%20😊&body=Hi%20Dhondudhondi,%0A%0AThanks%20for%20the%20birthday%20note...%20I've%20been%20thinking..." class="cta-button">✉️ Reply to Me</a>
+            <br><small style="opacity: 0.7;">(She clicks → pre-filled email to YOUR address)</small>
+        </div>
     </div>
 
-    <div class="nav-buttons">
-      <button onclick="prevScreen()">← Back</button>
-      <button onclick="nextScreen()">Next →</button>
-    </div>
-  </div>
+    <script>
+        // Accurate Birthday Countdown for May 24
+        function getNextBirthday() {
+            const now = new Date();
+            const nextBirthday = new Date(now.getFullYear(), 4, 24); // May 24 (month 4 = May)
+            if (now > nextBirthday) {
+                nextBirthday.setFullYear(now.getFullYear() + 1);
+            }
+            return nextBirthday;
+        }
+        
+        const birthday = getNextBirthday();
+        function updateCountdown() {
+            const now = new Date();
+            const diff = birthday - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            
+            if (days === 0 && hours === 0) {
+                document.getElementById('countdown').innerHTML = 
+                    '🎉 HAPPY BIRTHDAY NIDHI! May 24th is here! 🥳';
+            } else if (days === 0) {
+                document.getElementById('countdown').innerHTML = 
+                    `Your birthday is TODAY! Just ${hours} hours away... 🎂`;
+            } else {
+                document.getElementById('countdown').innerHTML = 
+                    `Your birthday is in ${days} days... Can't wait to celebrate you from afar. ✨`;
+            }
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 3600000); // Update hourly
 
-  <!-- SCREEN 3 -->
-  <div class="screen" data-music="2">
-    <div class="content">
-      <h2>What I Understood</h2>
-      <p>Love also means space… not just closeness.</p>
-    </div>
+        // Gentle Interactions
+        const cards = document.querySelectorAll('.card');
+        cards.forEach((card, i) => {
+            card.style.animationDelay = `${i * 0.2}s`;
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-12px) scale(1.02)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
 
-    <div class="nav-buttons">
-      <button onclick="prevScreen()">← Back</button>
-      <button onclick="nextScreen()">Next →</button>
-    </div>
-  </div>
-
-  <!-- SCREEN 4 -->
-  <div class="screen" data-music="2">
-    <div class="content">
-    <h2>A Place For You</h2>
-    </div>
-
-    <div>
-      <button onclick="openModal('overthinking')">Overthinking</button>
-      <button onclick="openModal('low')">Feeling Low</button>
-    </div>
-
-    <div class="nav-buttons">
-      <button onclick="prevScreen()">← Back</button>
-      <button onclick="nextScreen()">Next →</button>
-    </div>
-  </div>
-
-  <!-- SCREEN 5 -->
-  <div class="screen" data-music="3">
-    <div class="content">
-      <h2>No Expectations</h2>
-      <p>You don’t owe me anything.</p>
-    </div>
-
-    <span class="hidden-msg" onclick="revealSecret()">&#128151</span>
-
-    <div class="nav-buttons">
-      <button onclick="prevScreen()">← Back</button>
-    </div>
-  </div>
-
-</div>
-
-<!-- MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-content" id="modalContent"></div>
-</div>
-
-  <!-- Mute/Unmute -->
-<button id="muteBtn" onclick="toggleMute()">🔊</button>
-  
-<script src="script.js"></script>
-
+        // Page Load Message
+        window.addEventListener('load', () => {
+            console.log('🌟 Website loaded perfectly for Nidhi. Share this link with her!');
+        });
+    </script>
 </body>
 </html>
