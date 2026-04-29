@@ -3,138 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nidhi Sikarwar – A Birthday Reflection | From Dhondudhondi</title>
+    <title>For YOU</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@400;700&display=swap');
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
             color: #fff;
             overflow-x: hidden;
-            min-height: 100vh;
         }
-        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
-        header {
-            text-align: center; padding: 60px 0;
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        
+        /* Hero Header */
+        header { 
+            text-align: center; padding: 80px 0 40px; position: relative; 
             animation: fadeIn 1.5s ease-out;
         }
-        h1 {
-            font-family: 'Playfair Display', serif; font-size: 3.5rem; margin-bottom: 15px;
-            opacity: 0.95; letter-spacing: 2px;
+        h1 { 
+            font-family: 'Playfair Display', serif; font-size: 4.2rem; 
+            background: linear-gradient(45deg, #ff6b9d, #c44569); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 25px; letter-spacing: 4px;
         }
         .subtitle { 
-            font-size: 1.3rem; opacity: 0.85; max-width: 600px; margin: 0 auto 30px;
-            line-height: 1.6;
+            font-size: 1.4rem; opacity: 0.95; max-width: 800px; margin: 0 auto 50px; 
+            line-height: 1.8; font-weight: 300;
         }
-        .birthday-countdown {
-            background: rgba(255,255,255,0.12); border-radius: 15px; padding: 25px;
-            backdrop-filter: blur(15px); font-size: 1.1rem; margin: 20px 0;
+        .birthday-countdown { 
+            background: rgba(255,255,255,0.2); border-radius: 25px; padding: 35px; 
+            backdrop-filter: blur(25px); font-size: 1.3rem; margin: 40px 0 80px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
-        .growth-section, .memories {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin: 60px 0;
+
+        /* Main Photo Memories - ALL ABOUT HER -->
+        .photo-memories { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); 
+            gap: 35px; margin: 100px 0;
         }
-        .card {
-            background: rgba(255,255,255,0.1); border-radius: 18px; padding: 30px; text-align: center;
-            backdrop-filter: blur(12px); transition: all 0.4s; border: 1px solid rgba(255,255,255,0.15);
+        .photo-card {
+            position: relative; background: rgba(255,255,255,0.15); border-radius: 30px; 
+            overflow: hidden; backdrop-filter: blur(20px); transition: all 0.6s;
+            border: 2px solid rgba(255,255,255,0.3); cursor: pointer;
         }
-        .card:hover { 
-            transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); 
-            border-color: rgba(255,255,255,0.4);
-        }
-        .memory-img { 
-            width: 100%; height: 180px; object-fit: cover; border-radius: 12px; margin-bottom: 20px; 
-        }
-        .reflection {
-            max-width: 850px; margin: 60px auto; background: rgba(255,255,255,0.15); 
-            padding: 45px; border-radius: 22px; backdrop-filter: blur(20px); 
-            line-height: 1.8; text-align: center; font-weight: 300;
-            animation: fadeInUp 2s ease-out 0.3s both;
-        }
-        .cta-section {
-            text-align: center; margin: 70px 0;
-        }
-        .cta-button {
-            display: inline-block; background: rgba(255,255,255,0.2); color: #fff; 
-            padding: 16px 35px; border: 2px solid rgba(255,255,255,0.4); 
-            border-radius: 40px; font-size: 1.1rem; margin: 15px; cursor: pointer; 
-            transition: all 0.3s; text-decoration: none; backdrop-filter: blur(10px);
-        }
-        .cta-button:hover { 
-            background: rgba(255,255,255,0.3); transform: scale(1.05); 
+        .photo-card:hover { 
+            transform: translateY(-20px) scale(1.03); 
+            box-shadow: 0 40px 80px rgba(255,107,157,0.4);
             border-color: rgba(255,255,255,0.6);
         }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 768px) { h1 { font-size: 2.8rem; } .reflection { padding: 30px; } }
+        .photo-card img { 
+            width: 100%; height: 320px; object-fit: cover; transition: transform 0.6s ease; 
+        }
+        .photo-card:hover img { transform: scale(1.12); }
+        .photo-overlay {
+            position: absolute; bottom: 0; left: 0; right: 0; 
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            padding: 40px 30px 30px; color: white; transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+        .photo-card:hover .photo-overlay { transform: translateY(0); }
+        .photo-title { 
+            font-family: 'Playfair Display'; font-size: 1.8rem; margin-bottom: 15px; 
+        }
+        .photo-desc { 
+            font-size: 1.1rem; line-height: 1.6; opacity: 0.98; font-weight: 300;
+        }
+
+        /* Special Nidhi Tribute Section */
+        .nidhi-tribute {
+            max-width: 950px; margin: 100px auto; padding: 70px 60px; 
+            background: rgba(255,255,255,0.22); border-radius: 35px; 
+            backdrop-filter: blur(30px); text-align: center; position: relative;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.15);
+        }
+        .nidhi-tribute::before {
+            content: '💖'; position: absolute; top: -20px; left: 50%; 
+            transform: translateX(-50%); font-size: 2.5rem;
+        }
+        .tribute-title { 
+            font-family: 'Playfair Display'; font-size: 2.8rem; margin-bottom: 35px; 
+            background: linear-gradient(45deg, #ff6b9d, #c44569); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .tribute-text { 
+            font-size: 1.25rem; line-height: 1.9; max-width: 800px; margin: 0 auto 40px;
+            opacity: 0.95; font-weight: 300;
+        }
+
+        /* CTAs */
+        .cta-section { text-align: center; margin: 120px 0 80px; }
+        .cta-button {
+            display: inline-block; background: linear-gradient(45deg, #ff6b9d, #c44569); 
+            color: white; padding: 20px 50px; border: none; border-radius: 60px; 
+            font-size: 1.2rem; margin: 25px; cursor: pointer; transition: all 0.4s;
+            text-decoration: none; font-weight: 500; box-shadow: 0 20px 45px rgba(255,107,157,0.4);
+            position: relative; overflow: hidden;
+        }
+        .cta-button:hover { 
+            transform: translateY(-5px); box-shadow: 0 30px 60px rgba(255,107,157,0.6);
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) { 
+            h1 { font-size: 3rem; } .photo-memories { grid-template-columns: 1fr; } 
+            .nidhi-tribute { padding: 50px 30px; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Hero -->
         <header>
-            <h1>Hello, Nidhi Sikarwar</h1>
-            <p class="subtitle">A small birthday reflection from someone who's grown a lot since we last spoke. Wishing you all the joy you deserve on May 24th.</p>
+            <h1>Nidhi Sikarwar</h1>
+            <p class="subtitle">A birthday tribute filled with our best memories. You've always been special – this is my way of celebrating you.</p>
             <div class="birthday-countdown" id="countdown"></div>
         </header>
 
-        <section class="growth-section">
-            <div class="card">
-                <h3>🌱 What I've Learned</h3>
-                <p>Since we parted ways, I've focused on myself—reflecting deeply, picking up new interests, understanding emotions better. You've been part of my growth story.</p>
+        <!-- 4 Beautiful Photo Memories (ALL ABOUT YOUR TIME TOGETHER) -->
+        <section class="photo-memories">
+            <div class="photo-card">
+                <img src="[PHOTO_1_URL]" alt="Nidhi - Our First Adventure" loading="lazy">
+                <div class="photo-overlay">
+                    <div class="photo-title">🌟 First Adventure Together</div>
+                    <p class="photo-desc">That day we discovered something new. Your smile lit up everything around us.</p>
+                </div>
             </div>
-            <div class="card">
-                <h3>🙏 Gratitude</h3>
-                <p>Thank you, Nidhi, for the laughs, lessons, and light you brought into my life. No matter what, I'm truly grateful for our time together.</p>
+            
+            <div class="photo-card">
+                <img src="[PHOTO_2_URL]" alt="Nidhi - Coffee Moments" loading="lazy">
+                <div class="photo-overlay">
+                    <div class="photo-title">☕ Endless Coffee Talks</div>
+                    <p class="photo-desc">Hours melted away as we shared dreams over coffee. You made time magical.</p>
+                </div>
             </div>
-            <div class="card">
-                <h3>💭 Hopeful Future</h3>
-                <p>Life changes us both. I'd genuinely love to hear how you've been—no expectations, just curiosity about the amazing person you continue to be.</p>
+            
+            <div class="photo-card">
+                <img src="[PHOTO_3_URL]" alt="Nidhi - Sunset Beauty" loading="lazy">
+                <div class="photo-overlay">
+                    <div class="photo-title">🌅 Perfect Sunset</div>
+                    <p class="photo-desc">Watching the sky with you felt like the world paused just for us.</p>
+                </div>
+            </div>
+            
+            <div class="photo-card">
+                <img src="[PHOTO_4_URL]" alt="Nidhi - Music Memories" loading="lazy">
+                <div class="photo-overlay">
+                    <div class="photo-title">🎶 Our Song Moments</div>
+                    <p class="photo-desc">Dancing, singing, laughing. Music with you was always unforgettable.</p>
+                </div>
             </div>
         </section>
 
-        <section class="memories">
-            <div class="card">
-                <div class="memory-img" style="background: linear-gradient(45deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; font-size: 3rem;">☕</div>
-                <h3>Our Coffee Moments</h3>
-                <p>Those casual coffee runs and endless conversations... they taught me what real connection feels like.</p>
+        <!-- Beautiful Tribute TO HER -->
+        <div class="nidhi-tribute">
+            <div class="tribute-title">What Makes You Special, Nidhi</div>
+            <div class="tribute-text">
+                <p>Happy Birthday, Nidhi Sikarwar <span style="font-size: 1.5rem;">(May 24, 2005)</span></p>
+                <p>These moments aren't just memories – they're proof of the light you bring. Your laugh, your kindness, your spark... they've stayed with me.</p>
+                <p>Life took us different ways, but gratitude doesn't fade. This is me saying thank you, and celebrating the amazing person you are.</p>
+                <p style="margin-top: 30px; font-size: 1.4rem; opacity: 0.9;">
+                    If you'd ever want to catch up or just say hello, I'm always here.<br>
+                    <strong>dhondudhondi@gmail.com</strong>
+                </p>
             </div>
-            <div class="card">
-                <div class="memory-img" style="background: linear-gradient(45deg, #764ba2, #f093fb); display: flex; align-items: center; justify-content: center; font-size: 3rem;">🌅</div>
-                <h3>Sunset Memories</h3>
-                <p>Watching sunsets together, sharing dreams... simple moments that stay with me.</p>
-            </div>
-            <div class="card">
-                <div class="memory-img" style="background: linear-gradient(45deg, #f093fb, #667eea); display: flex; align-items: center; justify-content: center; font-size: 3rem;">🎶</div>
-                <h3>The Music We Shared</h3>
-                <p>Songs that still play in my mind when I think of the good times we had.</p>
-            </div>
-        </section>
-
-        <div class="reflection">
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 25px;">A Note from Dhondudhondi</h2>
-            <p><strong>Dear Nidhi,</strong></p>
-            <p>Happy 19th Birthday (May 24, 2005 – what a special day). It's been some time since our paths diverged, but I wanted to reach out on your birthday.</p>
-            <p>These past months, I've spent time reflecting and growing—not to revisit the past, but to appreciate it and become better. You've been part of that journey, teaching me about joy, connection, and resilience.</p>
-            <p>No pressure at all. I just wanted you to know I think of you with gratitude and wish you nothing but happiness ahead. If you'd ever like to catch up, hear how life's been treating you, or just exchange a hello—I'm here with an open heart.</p>
-            <p>Wishing you a birthday filled with light, laughter, and all the beautiful things you deserve.<br>
-            <em>Warmly,<br>Dhondudhondi</em></p>
         </div>
 
+        <!-- Simple, Loving CTAs -->
         <div class="cta-section">
-            <p style="opacity: 0.9; margin-bottom: 30px; font-style: italic;">If this brought a smile, whenever you're ready...</p>
-            <a href="mailto:dhondudhondi@gmail.com?subject=Hey%20from%20Nidhi%20😊&body=Hi%20Dhondudhondi,%0A%0AThanks%20for%20the%20birthday%20note...%20I've%20been%20thinking..." class="cta-button">✉️ Reply to Me</a>
-            <br><small style="opacity: 0.7;">(She clicks → pre-filled email to YOUR address)</small>
+            <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 45px; font-style: italic;">
+                These memories made me smile today. Hope they do the same for you...
+            </p>
+            <a href="mailto:bhushanharode0246@gmail.com?subject=Hey%20from%20Nidhi%20on%20my%20birthday%20😊&body=Hi%20Bhushan,%0AThank%20you%20for%20these%20beautiful%20memories...%0A" class="cta-button">💕 Reply to Me</a>
         </div>
     </div>
 
+    <!-- Smart Birthday Counter -->
     <script>
-        // Accurate Birthday Countdown for May 24
         function getNextBirthday() {
             const now = new Date();
-            const nextBirthday = new Date(now.getFullYear(), 4, 24); // May 24 (month 4 = May)
-            if (now > nextBirthday) {
-                nextBirthday.setFullYear(now.getFullYear() + 1);
-            }
+            let nextBirthday = new Date(now.getFullYear(), 4, 24); // May 24
+            if (now > nextBirthday) nextBirthday.setFullYear(now.getFullYear() + 1);
             return nextBirthday;
         }
         
@@ -143,37 +191,30 @@
             const now = new Date();
             const diff = birthday - now;
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             
-            if (days === 0 && hours === 0) {
-                document.getElementById('countdown').innerHTML = 
-                    '🎉 HAPPY BIRTHDAY NIDHI! May 24th is here! 🥳';
-            } else if (days === 0) {
-                document.getElementById('countdown').innerHTML = 
-                    `Your birthday is TODAY! Just ${hours} hours away... 🎂`;
+            const el = document.getElementById('countdown');
+            if (days <= 0) {
+                el.innerHTML = `
+                    <div style="font-size: 1.6rem; font-weight: 600; margin-bottom: 15px;">
+                        🎉 HAPPY BIRTHDAY NIDHI! 🎉
+                    </div>
+                    <div>May 24th – Celebrating YOU today! 🥳💖</div>
+                `;
             } else {
-                document.getElementById('countdown').innerHTML = 
-                    `Your birthday is in ${days} days... Can't wait to celebrate you from afar. ✨`;
+                el.innerHTML = `
+                    <div style="font-size: 1.8rem; font-weight: 600; margin-bottom: 10px;">
+                        ${days} days
+                    </div>
+                    <div>until your birthday magic ✨</div>
+                `;
             }
         }
         updateCountdown();
-        setInterval(updateCountdown, 3600000); // Update hourly
+        setInterval(updateCountdown, 24 * 60 * 60 * 1000); // Daily
 
-        // Gentle Interactions
-        const cards = document.querySelectorAll('.card');
-        cards.forEach((card, i) => {
-            card.style.animationDelay = `${i * 0.2}s`;
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-12px) scale(1.02)';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Page Load Message
-        window.addEventListener('load', () => {
-            console.log('🌟 Website loaded perfectly for Nidhi. Share this link with her!');
+        // Smooth hover effects
+        document.querySelectorAll('.photo-card').forEach((card, i) => {
+            card.style.animationDelay = `${i * 0.15}s`;
         });
     </script>
 </body>
