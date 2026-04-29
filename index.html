@@ -3,321 +3,310 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✨ Nidhi Sikarwar – A Birthday Story ✨</title>
+    <title>A Quiet Space</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&family=Playfair+Display:wght@300;400;700;900&display=swap');
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* DESIGN SYSTEM */
+        :root {
+            --bg-primary: #f8f4f0; /* Soft cream */
+            --bg-secondary: #fffaf5; /* Warmer off-white */
+            --text-primary: #4a4a4a; /* Muted dark gray */
+            --text-secondary: #6b6b6b; /* Softer gray */
+            --accent-warm: #d4a574; /* Gentle terracotta */
+            --accent-soft: #e8d5b7; /* Pale gold */
+            --border-color: #e5e0d8; /* Subtle divider */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Poppins', sans-serif;
-            background: #0f0f23;
-            color: #fff;
-            overflow-x: hidden;
-            line-height: 1.7;
-        }
-        .container { max-width: 1300px; margin: 0 auto; padding: 0 20px; }
-
-        /* 1. HERO */
-        .hero {
-            min-height: 100vh; display: flex; align-items: center; justify-content: center;
-            background: radial-gradient(ellipse at center, #ff9a8b 0%, #fecfef 50%, #667eea 100%);
-            text-align: center; position: relative; overflow: hidden;
-        }
-        .hero-content h1 {
-            font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 6rem);
-            background: linear-gradient(135deg, #ff6b9d, #ffd93d, #ff6b9d); 
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            margin-bottom: 20px; animation: glow 3s ease-in-out infinite alternate;
-        }
-        @keyframes glow { 0% { text-shadow: 0 0 20px #ff6b9d; } 100% { text-shadow: 0 0 40px #ffd93d; } }
-        .hero-subtitle { font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 300; max-width: 800px; margin: 0 auto 40px; opacity: 0.95; }
-
-        /* 2. COUNTDOWN */
-        .countdown-section { padding: 80px 0; background: rgba(255,255,255,0.05); text-align: center; }
-        #countdown { font-size: 2rem; font-weight: 600; padding: 40px; background: rgba(255,255,255,0.1); border-radius: 25px; backdrop-filter: blur(20px); max-width: 500px; margin: 0 auto; }
-
-        /* 3. MEMORY GALLERY */
-        .memories-gallery { padding: 120px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
-        .memory-card {
-            position: relative; border-radius: 25px; overflow: hidden; cursor: pointer;
-            background: rgba(255,255,255,0.1); backdrop-filter: blur(15px); transition: all 0.6s;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        .memory-card:hover { transform: translateY(-20px) scale(1.05); box-shadow: 0 50px 100px rgba(0,0,0,0.4); }
-        .memory-img { width: 100%; height: 300px; object-fit: cover; transition: transform 0.6s; }
-        .memory-card:hover .memory-img { transform: scale(1.1); }
-        .memory-overlay {
-            position: absolute; bottom: 0; left: 0; right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9)); padding: 35px 25px;
-            transform: translateY(25px); transition: all 0.4s;
-        }
-        .memory-card:hover .memory-overlay { transform: translateY(0); }
-        .memory-title { font-family: 'Playfair Display'; font-size: 1.7rem; margin-bottom: 12px; }
-        .memory-text { opacity: 0.95; line-height: 1.6; }
-
-        /* 4. HER QUALITIES */
-        .qualities-section { padding: 120px 0; background: rgba(15,15,35,0.8); }
-        .qualities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
-        .quality-item {
-            text-align: center; padding: 50px 30px; background: rgba(255,255,255,0.08);
-            border-radius: 20px; backdrop-filter: blur(20px); transition: all 0.4s;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .quality-item:hover { transform: translateY(-10px); background: rgba(255,107,157,0.15); box-shadow: 0 30px 60px rgba(255,107,157,0.2); }
-        .quality-emoji { font-size: 4rem; margin-bottom: 20px; display: block; }
-        .quality-title { font-size: 1.5rem; margin-bottom: 15px; font-weight: 500; }
-
-        /* 5. LOVE LETTER */
-        .letter-section { padding: 150px 0; background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #667eea 100%); text-align: center; }
-        .letter-container {
-            max-width: 900px; margin: 0 auto; background: rgba(255,255,255,0.15);
-            padding: 80px 70px; border-radius: 35px; backdrop-filter: blur(30px);
-            box-shadow: 0 50px 120px rgba(0,0,0,0.2); font-size: 1.25rem; line-height: 1.9;
-            position: relative;
-        }
-        .letter-container::before { content: '💌'; position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 3rem; background: #ff6b9d; padding: 15px; border-radius: 50%; }
-
-        /* 6. FUTURE DREAMS - NEW SECTION */
-        .future-dreams-section {
-            padding: 140px 0; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            position: relative; overflow: hidden;
-        }
-        .future-dreams-section::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="20" cy="20" r="2" fill="url(%23a)"/><circle cx="80" cy="80" r="1.5" fill="url(%23a)"/><circle cx="40" cy="70" r="1" fill="url(%23a)"/></svg>') repeat;
-            animation: sparkle 20s linear infinite;
-        }
-        @keyframes sparkle { 0% { transform: translateY(0) rotate(0deg); } 100% { transform: translateY(-100px) rotate(360deg); } }
-        .dreams-content {
-            max-width: 900px; margin: 0 auto; text-align: center; position: relative; z-index: 2;
-            background: rgba(255,255,255,0.1); padding: 70px 50px; border-radius: 30px;
-            backdrop-filter: blur(25px); box-shadow: 0 40px 100px rgba(0,0,0,0.2);
-        }
-        .dreams-title {
-            font-family: 'Playfair Display'; font-size: 2.8rem; margin-bottom: 30px;
-            background: linear-gradient(45deg, #ffffff, #a8e6cf); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .dreams-goals { font-size: 1.3rem; margin-bottom: 40px; opacity: 0.95; }
-        .dreams-promise {
-            font-size: 1.25rem; font-style: italic; opacity: 0.9; max-width: 700px; margin: 0 auto;
-            background: rgba(255,255,255,0.2); padding: 25px 30px; border-radius: 20px;
-            border-left: 5px solid #a8e6cf;
+            font-family: 'Georgia', 'Times New Roman', serif; /* Serif for warmth and readability */
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        /* 7. SHARED DREAMS */
-        .shared-dreams-section { padding: 120px 0; background: rgba(255,255,255,0.05); }
-        .shared-dreams-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1100px; margin: 0 auto; }
-        .dream-text { font-size: 1.2rem; }
-        .dream-list { list-style: none; font-size: 1.15rem; opacity: 0.9; }
-        .dream-list li { padding: 15px 0; position: relative; padding-left: 40px; }
-        .dream-list li::before { content: '✨'; position: absolute; left: 0; font-size: 1.5rem; }
-
-        /* 8. FINAL WISH */
-        .final-wish { padding: 120px 0; text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .wish-circle {
-            width: 300px; height: 300px; margin: 0 auto 50px; border-radius: 50%;
-            background: rgba(255,255,255,0.15); backdrop-filter: blur(25px);
-            display: flex; align-items: center; justify-content: center; font-size: 3rem;
-            animation: pulse 3s infinite; box-shadow: 0 0 50px rgba(255,255,255,0.3);
+        h1, h2 {
+            font-family: 'Playfair Display', serif; /* Elegant serif for headings */
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 8px;
         }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 
-        /* 9. CTA */
-        .cta-section { padding: 100px 0; text-align: center; background: rgba(15,15,35,0.9); }
-        .cta-button {
-            display: inline-block; background: linear-gradient(45deg, #ff6b9d, #c44569);
-            color: white; padding: 22px 60px; border: none; border-radius: 60px;
-            font-size: 1.3rem; font-weight: 600; cursor: pointer; margin: 20px;
-            transition: all 0.5s; text-decoration: none; box-shadow: 0 25px 50px rgba(255,107,157,0.4);
+        h1 { font-size: 2.2em; }
+        h2 { font-size: 1.8em; margin-top: 60px; margin-bottom: 20px; }
+
+        p {
+            margin-bottom: 24px;
+            max-width: 650px;
         }
-        .cta-button:hover { transform: translateY(-8px); box-shadow: 0 35px 70px rgba(255,107,157,0.6); }
 
-        @media (max-width: 768px) {
-            .shared-dreams-grid { grid-template-columns: 1fr; gap: 40px; }
-            .letter-container, .dreams-content { padding: 50px 30px; }
+        .section {
+            margin-bottom: 80px;
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .intro {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .nav-link {
+            display: inline-block;
+            background: var(--accent-soft);
+            color: var(--text-primary);
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            margin: 0 8px 16px;
+            transition: background 0.3s ease, transform 0.2s ease;
+            border: 1px solid var(--accent-warm);
+        }
+
+        .nav-link:hover {
+            background: var(--accent-warm);
+            transform: translateY(-1px);
+        }
+
+        .support-subsection {
+            background: var(--bg-secondary);
+            padding: 24px;
+            margin: 20px 0;
+            border-left: 4px solid var(--accent-warm);
+            border-radius: 4px;
+        }
+
+        .voice-note {
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            margin-top: 12px;
+            padding: 12px;
+            background: rgba(212, 165, 116, 0.1);
+            border-radius: 4px;
+        }
+
+        /* Smooth scrolling and transitions */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .section {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(even) { animation-delay: 0.1s; }
+        .section:nth-child(3n) { animation-delay: 0.2s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 600px) {
+            body { padding: 20px 16px; font-size: 16px; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.5em; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        
-        <!-- 1️⃣ HERO -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Nidhi Sikarwar</h1>
-                <p class="hero-subtitle">A birthday story celebrating the light you bring to everyone around you</p>
+
+    <!-- HOMEPAGE -->
+    <section id="home" class="intro section">
+        <h1>A Quiet Space</h1>
+        <p style="font-size: 1.2em; max-width: none; margin-bottom: 40px;">
+            Hi. This is for you, on your birthday.
+        </p>
+        <p>
+            A few thoughts I've carried. No rush to read. 
+            <br>Take your time, or close this anytime.
+        </p>
+        <p style="margin-top: 40px;">
+            <a href="#birthday" class="nav-link">Birthday Wishes</a>
+            <a href="#never-said" class="nav-link">What I Never Said Properly</a>
+            <a href="#understood" class="nav-link">What I've Understood</a>
+            <a href="#meaning" class="nav-link">What You Mean To Me</a>
+            <a href="#support" class="nav-link">A Place For You</a>
+            <a href="#thoughts" class="nav-link">Things I Don’t Say Often</a>
+            <a href="#expectations" class="nav-link">No Expectations</a>
+        </p>
+    </section>
+
+    <!-- BIRTHDAY SECTION -->
+    <section id="birthday" class="section">
+        <h2>Happy Birthday</h2>
+        <p>
+            I hope this year brings you quiet joys. 
+            <br>The kind that settle in softly.
+        </p>
+        <p>
+            May you have space to breathe, 
+            <br>people who see you, 
+            <br>and moments that feel just right.
+        </p>
+        <p>
+            You deserve that. Simply.
+        </p>
+    </section>
+
+    <!-- WHAT I NEVER SAID PROPERLY -->
+    <section id="never-said" class="section">
+        <h2>What I Never Said Properly</h2>
+        <p>
+            I should have listened more when you needed space.
+            <br>Not filled it with my words.
+        </p>
+        <p>
+            Your quiet wasn't empty. 
+            <br>It was you processing, feeling deeply.
+            <br>I see that now.
+        </p>
+        <p>
+            And when I got frustrated, 
+            <br>it was my own impatience talking. 
+            <br>Not a fair measure of you.
+        </p>
+    </section>
+
+    <!-- WHAT I’VE UNDERSTOOD -->
+    <section id="understood" class="section">
+        <h2>What I’ve Understood</h2>
+        <p>
+            Overthinking isn't a flaw. 
+            <br>It's how your mind protects your heart.
+        </p>
+        <p>
+            I've learned to pause before reacting. 
+            <br>To give room for feelings to unfold.
+        </p>
+        <p>
+            Relationships need steady ground, 
+            <br>not constant motion. 
+            <br>I've been working on that steadiness in myself.
+        </p>
+    </section>
+
+    <!-- WHAT YOU MEAN TO ME -->
+    <section id="meaning" class="section">
+        <h2>What You Mean To Me</h2>
+        <p>
+            The way you notice small details others miss.
+            <br>Like how light shifts in a room.
+        </p>
+        <p>
+            Your laugh when something truly lands. 
+            <br>Rare, but real.
+        </p>
+        <p>
+            How you hold space for hard emotions 
+            <br>without rushing them away.
+        </p>
+        <p>
+            Those are gifts. Ones I'm grateful for knowing.
+        </p>
+    </section>
+
+    <!-- A PLACE FOR YOU (EMOTIONAL SUPPORT SECTION) -->
+    <section id="support" class="section">
+        <h2>A Place For You</h2>
+        <p>
+            Some words if you need them. 
+            <br>Short anchors for tough moments.
+        </p>
+
+        <div class="support-subsection">
+            <h3 style="margin-bottom: 12px;">When you're overthinking</h3>
+            <p>One thought at a time. This one is enough for now.</p>
+            <p>Your mind is kind, even when it's busy.</p>
+            <p>Breathe. You've got this.</p>
+            <div class="voice-note">
+                [Voice note script: Soft, slow] "One thought at a time. You've got this."
             </div>
-        </section>
+        </div>
 
-        <!-- 2️⃣ COUNTDOWN -->
-        <section class="countdown-section">
-            <div id="countdown"></div>
-        </section>
-
-        <!-- 3️⃣ MEMORY GALLERY -->
-        <section class="memories-gallery">
-            <div class="gallery-grid">
-                <div class="memory-card">
-                    <img src="[PHOTO_1_URL]" alt="Memory 1" class="memory-img">
-                    <div class="memory-overlay">
-                        <div class="memory-title">🌸 First Sparkle</div>
-                        <p class="memory-text">That moment everything began. Your energy was electric.</p>
-                    </div>
-                </div>
-                <div class="memory-card">
-                    <img src="[PHOTO_2_URL]" alt="Memory 2" class="memory-img">
-                    <div class="memory-overlay">
-                        <div class="memory-title">☕ Coffee Magic</div>
-                        <p class="memory-text">Worlds shared over warm cups. Hours felt like moments.</p>
-                    </div>
-                </div>
-                <div class="memory-card">
-                    <img src="[PHOTO_3_URL]" alt="Memory 3" class="memory-img">
-                    <div class="memory-overlay">
-                        <div class="memory-title">🌅 Golden Hour</div>
-                        <p class="memory-text">Sunset framed your beauty perfectly. Timeless.</p>
-                    </div>
-                </div>
-                <div class="memory-card">
-                    <img src="[PHOTO_4_URL]" alt="Memory 4" class="memory-img">
-                    <div class="memory-overlay">
-                        <div class="memory-title">🎶 Heart Songs</div>
-                        <p class="memory-text">Melodies that still echo. Our soundtrack forever.</p>
-                    </div>
-                </div>
+        <div class="support-subsection">
+            <h3 style="margin-bottom: 12px;">When you feel low</h3>
+            <p>This wave will pass. It always does.</p>
+            <p>You're allowed to just be, without fixing.</p>
+            <p>Small steps. Coffee. A walk. That's plenty.</p>
+            <div class="voice-note">
+                [Voice note script: Gentle, reassuring] "This wave will pass. Small steps are enough."
             </div>
-        </section>
+        </div>
 
-        <!-- 4️⃣ HER QUALITIES -->
-        <section class="qualities-section">
-            <div class="qualities-grid">
-                <div class="quality-item">
-                    <span class="quality-emoji">🌟</span>
-                    <div class="quality-title">Radiant Energy</div>
-                    <p>Your presence lights up rooms. Infectious positivity.</p>
-                </div>
-                <div class="quality-item">
-                    <span class="quality-emoji">💖</span>
-                    <div class="quality-title">Deep Kindness</div>
-                    <p>You care in ways that linger long after.</p>
-                </div>
-                <div class="quality-item">
-                    <span class="quality-emoji">🎨</span>
-                    <div class="quality-title">Creative Soul</div>
-                    <p>Everything you touch becomes more beautiful.</p>
-                </div>
-                <div class="quality-item">
-                    <span class="quality-emoji">🌈</span>
-                    <div class="quality-title">Boundless Joy</div>
-                    <p>Your laughter heals hearts instantly.</p>
-                </div>
+        <div class="support-subsection">
+            <h3 style="margin-bottom: 12px;">When you miss me</h3>
+            <p>It's okay to feel that. 
+            <br>Memories don't need to be pushed away.</p>
+            <p>Let it sit, then let it go when ready.</p>
+            <div class="voice-note">
+                [Voice note script: Calm, steady] "It's okay to feel it. Let it sit, then go."
             </div>
-        </section>
+        </div>
 
-        <!-- 5️⃣ LOVE LETTER -->
-        <section class="letter-section">
-            <div class="letter-container">
-                <h2 style="font-family: 'Playfair Display'; font-size: 3rem; margin-bottom: 40px;">
-                    Dear Nidhi
-                </h2>
-                <p style="font-size: 1.3rem; margin-bottom: 30px;">
-                    Happy Birthday (May 24, 2005). 19 is going to be your year.
-                </p>
-                <p style="margin-bottom: 25px;">
-                    These memories capture moments when life felt perfect. Your laugh, your dreams, 
-                    your light – they've stayed with me through everything.
-                </p>
-                <p style="font-style: italic; opacity: 0.9; margin-bottom: 30px;">
-                    Distance changes paths, but gratitude keeps memories alive forever.
-                </p>
-                <p style="font-size: 1.4rem; font-weight: 500;">
-                    Forever grateful,<br><strong>Dhondudhondi</strong>
-                </p>
+        <div class="support-subsection">
+            <h3 style="margin-bottom: 12px;">When you can't sleep</h3>
+            <p>Close your eyes. Name three things you see in the dark.</p>
+            <p>Your breath is steady. Follow it.</p>
+            <p>Tomorrow is new. Rest now.</p>
+            <div class="voice-note">
+                [Voice note script: Whisper-soft, rhythmic] "Name three things. Breath is steady. Rest now."
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 6️⃣ 🌟 NEW FUTURE DREAMS SECTION -->
-        <section class="future-dreams-section">
-            <div class="dreams-content">
-                <h2 class="dreams-title">Your Bright Future Awaits</h2>
-                <div class="dreams-goals" style="font-size: 1.35rem; margin-bottom: 45px;">
-                    <strong>First and most importantly:</strong> Focus on your studies ✨ Chase every goal with all your heart 📚<br>
-                    The world needs your brilliance. Shine in your exams, build your dreams, become unstoppable.
-                </div>
-                <div class="dreams-promise">
-                    <strong>Know this:</strong> Someone here believes in you completely and will always be waiting patiently.<br>
-                    <em>"Only you or no one" – a quiet promise kept forever.</em><br>
-                    Your success comes first. Always.
-                </div>
-            </div>
-        </section>
+    <!-- THINGS I DON’T SAY OFTEN -->
+    <section id="thoughts" class="section">
+        <h2>Things I Don’t Say Often</h2>
+        <p>
+            I'm proud of how you carry your depth.
+            <br>Quietly, but fully.
+        </p>
+        <p>
+            You've taught me more about patience 
+            <br>than anyone.
+        </p>
+        <p>
+            I hope life gives you back 
+            <br>the gentleness you give.
+        </p>
+    </section>
 
-        <!-- 7️⃣ SHARED DREAMS -->
-        <section class="shared-dreams-section">
-            <div class="shared-dreams-grid">
-                <div>
-                    <h3 style="font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 40px;">
-                        Dreams We Once Shared
-                    </h3>
-                    <ul class="dream-list">
-                        <li>🌍 Road trips with perfect playlists</li>
-                        <li>🏠 Building beautiful memories together</li>
-                        <li>🌙 Late nights talking about stars</li>
-                        <li>💫 Watching your dreams take flight</li>
-                    </ul>
-                </div>
-                <img src="[PHOTO_5_URL]" alt="Dream Moment" style="width: 100%; border-radius: 25px; box-shadow: 0 30px 60px rgba(0,0,0,0.3);">
-            </div>
-        </section>
+    <!-- NO EXPECTATIONS -->
+    <section id="expectations" class="section">
+        <h2>No Expectations</h2>
+        <p>
+            You don't owe a reply. 
+            <br>Or any reaction.
+        </p>
+        <p>
+            This is just me sharing, 
+            <br>peacefully. 
+            <br>For you to have if it helps.
+        </p>
+        <p style="font-style: italic; color: var(--text-secondary);">
+            Take care. Always.
+        </p>
+    </section>
 
-        <!-- 8️⃣ FINAL WISH -->
-        <section class="final-wish">
-            <div class="wish-circle">🥳🎂💖</div>
-            <h2 style="font-size: 3rem; font-family: 'Playfair Display'; margin-bottom: 30px;">
-                May 24th Magic
-            </h2>
-            <p style="font-size: 1.4rem; max-width: 700px; margin: 0 auto; opacity: 0.95;">
-                Wishing you a year overflowing with success, joy, and everything beautiful.
-            </p>
-        </section>
-
-        <!-- 9️⃣ CTA -->
-        <section class="cta-section">
-            <h3 style="font-size: 2rem; margin-bottom: 40px;">
-                These memories live forever in my heart
-            </h3>
-            <p style="font-size: 1.2rem; margin-bottom: 50px; opacity: 0.85; max-width: 600px; margin-left: auto; margin-right: auto;">
-                If your birthday smile matches mine, I'd cherish hearing from you...
-            </p>
-            <a href="mailto:bhushanharode0246@gmail.com?subject=Nidhi%20May%2024th%20✨&body=Hi%20Dhondu,%0A%0AThis%20birthday%20surprise%20touched%20my%20heart...%0A" class="cta-button">
-                💌 Share Your Smile
-            </a>
-        </section>
-    </div>
-
-    <script>
-        // Birthday Countdown
-        function getNextBirthday() {
-            const now = new Date();
-            let nextBirthday = new Date(now.getFullYear(), 4, 24);
-            if (now > nextBirthday) nextBirthday.setFullYear(now.getFullYear() + 1);
-            return nextBirthday;
-        }
-        function updateCountdown() {
-            const birthday = getNextBirthday();
-            const now = new Date();
-            const diff = birthday - now;
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            
-            const el = document.getElementById('countdown');
-            if (days <= 0) {
-                el.innerHTML = '<div style="font-size: 2.5rem; font-weight: 700; color: #ff6b9d;">🎉 HAPPY BIRTHDAY NIDHI! 🎉</div><div style="font-size: 1.3rem;">May 24th – Your day has arrived! 🥳💖</div>';
-            } else {
-                el.innerHTML = `<div style="font-size: 3rem; font-weight: 700; color: #ffd93d;">${days}</div><div style="font-size: 1.4rem;">days until birthday magic ✨</div>`;
-            }
-        }
-        updateCountdown();
-        setInterval(updateCountdown, 24*60*60*1000);
-    </script>
 </body>
 </html>
