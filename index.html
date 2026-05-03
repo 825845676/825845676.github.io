@@ -65,20 +65,21 @@
         .content-row {
             display: flex;
             gap: 35px;
-            align-items: flex-start;
+            align-items: center;
             margin: 30px 0;
         }
 
         .text-side { flex: 1; }
         .image-side {
             flex: 0 0 240px;
-            height: 180px;
+            height: auto;
+            max-height: 180px;
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
 
-        .image-side img {
+        .image-side img, .img-side video{
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -176,9 +177,8 @@
                 <p>May you have space to breathe, people who see you, and moments that feel just right.</p>
             </div>
             <div class="image-side">
-                <video width="320" height="240" controls>
+                <video controls>
                   <source src="birthday.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
                 </video>
             </div>
         </div>
@@ -246,7 +246,7 @@
                     <p>You're allowed to just be, without fixing. Small steps. Coffee. A walk. That's plenty.</p>
                 </div>
                 <div class="image-side">
-                    <img src="feelinglow.heic" alt="Description">
+                    <img src="feelinglow.jpg" alt="Description">
                 </div>
             </div>
         </div>
@@ -259,7 +259,7 @@
                     <p>Let it sit, then let it go when ready.</p>
                 </div>
                 <div class="image-side">
-                    <img src="missing.heic" alt="Description">
+                    <img src="missing.jpg" alt="Description">
                 </div>
             </div>
         </div>
