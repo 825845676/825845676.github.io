@@ -20,10 +20,10 @@
         body {
             font-family: 'Georgia', 'Times New Roman', serif;
             font-size: 19px;
-            line-height: 1.65;
+            line-height: 1.5;
             color: var(--text-primary);
             background: var(--bg-primary);
-            padding: 50px 25px;
+            padding: 25px 20px;
             max-width: 850px;
             margin: 0 auto;
         }
@@ -40,15 +40,15 @@
             font-family: 'Playfair Display', serif;
             font-size: 2.1em;
             font-weight: 400;
-            margin: 70px 0 24px 0;
+            margin: 20px 0 20px 0;
         }
 
         p { margin-bottom: 28px; max-width: 680px; }
 
         /* HERO IMAGE */
         .hero-image {
-            width: 100%;
-            height: 350px;
+            width: 90%;
+            height: 380px;
             border-radius: 20px;
             margin: 40px 0 60px 0;
             overflow: hidden;
@@ -56,47 +56,91 @@
         }
 
         .hero-image img { 
-            width: 90%; 
+            width: 100%; 
             height: 100%; 
-            object-fit: cover; 
         }
 
         /* TEXT + IMAGE ROWS EVERYWHERE */
         .content-row {
             display: flex;
-            gap: 35px;
+            gap: 20px;
             align-items: center;
-            margin: 30px 0;
+            margin: 0;
         }
 
         .text-side { flex: 1; }
         .image-side {
             flex: 0 0 240px;
             height: auto;
-            max-height: 180px;
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
 
-        .image-side img, .img-side video{
-            width: 90%;
+        .image-side img{
+            width: 100%;
             height: 100%;
-            object-fit: cover;
         }
+	.image-side video {
+   		 width: 100%;
+   		 height: auto;
+   		 display: block;
+	}
 
         .section {
-            margin-bottom: 90px;
-            padding: 45px 0;
-            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 25px;
+            padding: 25px 0;
+            border-bottom: 2px solid var(--border-color);
             opacity: 0;
-            transform: translateY(15px);
-            animation: fadeInUp 0.7s ease forwards;
+            transform: translateY(25px);
+transition: all 0.7s ease, opacity 0.7s ease;
         }
+.section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* COUNTDOWN BOX */
+.countdown-box {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    margin: 10px 0 30px 0;
+    padding: 16px;
+
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+	transition: all .3s;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+}
+.countdown-box:hover{box-shadow: 0 6px 10px #d4a574;}
+
+/* EACH BLOCK */
+.time {
+    text-align: center;
+    min-width: 60px;
+}
+
+/* NUMBERS */
+.time span {
+    display: block;
+    font-size: 1.4em;
+    font-weight: 500;
+    color: var(--accent-warm);
+}
+
+/* LABELS */
+.time small {
+    font-size: 0.75em;
+    color: var(--text-secondary);
+}
+
 
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
-        .intro { text-align: center; padding: 90px 0; border-bottom: none; }
+        .intro { text-align: center; padding: 60px 0; border-bottom: none; }
 
         .nav-link {
             display: inline-block;
@@ -127,6 +171,69 @@
             border-radius: 12px;
         }
 
+	/* BUTTON */
+.soft-btn {
+    background: var(--bg-secondary);
+    border: 1px solid var(--accent-warm);
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.soft-btn:hover {
+    background: var(--accent-warm);
+    color: white;
+}
+
+/* POPUP OVERLAY */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+}
+
+/* POPUP BOX */
+.popup-box {
+    background: var(--bg-secondary);
+    padding: 30px;
+    border-radius: 14px;
+    max-width: 510px;
+    text-align: center;
+
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+
+    animation: fadeIn 0.4s ease;
+}
+
+.popup-box p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+/* SPECIAL*/
+.shayari {
+    font-style: italic;
+    color: var(--text-secondary);
+    margin: 10px 0;
+    line-height: 1.65;
+    font-size: 1.1em;
+border-left: 5px solid var(--accent-warm);
+border-radius: 10px;
+}
+
         /* MOBILE */
         @media (max-width: 768px) {
             body { padding: 30px 20px; font-size: 17px; }
@@ -145,7 +252,8 @@
     <section id="home" class="intro section">
         <h1>A Quiet Space</h1>
         <p style="font-size: 1.25em; margin-bottom: 45px;">
-            Hi. This is for you, <b>Dhondi</b>.
+            Hey! This is for you, <b>Nidhi (or Dhondi?)</b>.</br>
+I'm sure you know the day... and what it holds.
         </p>
         
         <!-- HERO IMAGE -->
@@ -154,15 +262,16 @@
         </div>
         
         <p style="font-size: 1.18em;">
-            A few thoughts I've carried. No rush to read. Close anytime.
+            A few thoughts I've carried. No rush to read.
+You can skim, pause, or stop anywhere. It’s okay.
         </p>
         
-        <div style="margin-top: 55px;">
-            <a href="#birthday" class="nav-link">Birthday Wishes</a>
+        <div style="margin-top: 50px;">
+            <a href="#birthday" class="nav-link">Birthday</a>
             <a href="#never-said" class="nav-link">What I Never Said Properly</a>
             <a href="#understood" class="nav-link">What I've Understood</a>
             <a href="#meaning" class="nav-link">What You Mean To Me</a>
-            <a href="#support" class="nav-link">A Place For You</a>
+            <a href="#support" class="nav-link">A Place For You</a>	
             <a href="#thoughts" class="nav-link">Things I Don't Say Often</a>
             <a href="#expectations" class="nav-link">No Expectations</a>
         </div>
@@ -170,11 +279,30 @@
 
     <!-- BIRTHDAY -->
     <section id="birthday" class="section">
-        <h2>Happy Birthday</h2>
+        <h2>Birthday</h2>
+
         <div class="content-row">
             <div class="text-side">
-                <p>I hope this year brings you quiet joys. The kind that settle in softly.</p>
-                <p>May you have space to breathe, people who see you, and moments that feel just right.</p>
+<div id="countdown" class="countdown-box">
+    <div class="time">
+        <span id="days">0</span>
+        <small>days</small>
+    </div>
+    <div class="time">
+        <span id="hours">0</span>
+        <small>hours</small>
+    </div>
+    <div class="time">
+        <span id="minutes">0</span>
+        <small>minutes</small>
+    </div>
+    <div class="time">
+        <span id="seconds">0</span>
+        <small>seconds</small>
+    </div>
+</div>
+                <p>I hope this year will bring the joy and success you've been quitely working for...</p>
+                <p>You always use to ask me - Am I Excited for Birthday? And honestly... YES, every year because 24<sup>th</sup> MAY means something more to me.</p>
             </div>
             <div class="image-side">
                 <video controls>
@@ -182,7 +310,7 @@
                 </video>
             </div>
         </div>
-        <p>You deserve that. Simply.</p>
+        <p>Here's a video of your last birthday, the moments we shared. You deserve that &#128153;&#x1FA77;.</p>
     </section>
 
     <!-- NEVER SAID -->
@@ -191,9 +319,12 @@
         <div class="content-row">
             <div class="text-side">
                 <p>I should have listened more when you needed space. Not filled it with my words.</p>
-                <p>Your quiet wasn't empty. It was you processing, feeling deeply. I see that now.</p>
+                <p>Your quiet wasn't empty. It was you thinking, feeling… carrying more than I understood. I see that now.</p>
             </div>
         </div>
+	<pre class="shayari">	हजारों बार हुई गुफ्तगू उनसे,
+		हजारों बात कहनी रह गईं</pre>
+
     </section>
 
     <!-- UNDERSTOOD -->
@@ -202,10 +333,10 @@
         <div class="content-row">
             <div class="text-side">
                 <p>Overthinking isn't a flaw. It's how your mind protects your heart.</p>
-                <p>I've learned to pause before reacting. To give room for feelings to unfold.</p>
+                <p>What I must have done was understand more… not just express. There were things I felt but never said,and things that hurt you… that I never noticed.</p>
             </div>
         </div>
-        <p>Relationships need steady ground, not constant motion. I've been working on that steadiness in myself.</p>
+        <p>And neither I'm an attitude BOY nor you are selfish CAT. </p>
     </section>
 
     <!-- MEANING -->
@@ -213,63 +344,72 @@
         <h2>What You Mean To Me</h2>
         <div class="content-row">
             <div class="text-side">
-                <p>The way you notice small details others miss. Like how light shifts in a room.</p>
-                <p>Your laugh when something truly lands. Rare, but real.</p>
+                <p>The way you notice small details others miss. Like how light changes in a room.</p>
+                <p>Your laugh - Rare, but real.</p>
             </div>
         </div>
-        <p>How you hold space for hard emotions without rushing them away. Those are gifts. Ones I'm grateful for knowing.</p>
+        <p>The way you handled me during my worst moods... is hard to explain.You were a place where I feet safe.</p>
+<pre class="shayari"> ये मुझे चैन क्यों नहीं पड़ता ,
+	एक ही शख़्स था जहाँ मैं क्या |</pre>
     </section>
 
     <!-- SUPPORT (NO VOICE NOTES - JUST TEXT + IMAGES) -->
     <section id="support" class="section">
         <h2>A Place For You</h2>
-        <p>Some words if you need them. Short anchors for tough moments.</p>
+        <p>Some words if you need them.</p>
 
         <div class="support-subsection">
             <div class="content-row">
                 <div class="text-side">
                     <h3 style="margin-bottom: 12px;">When you're overthinking</h3>
                     <p>One thought at a time. This one is enough for now.</p>
-                    <p>Your mind is kind, even when it's busy. Breathe. You've got this.</p>
+                    <p>You can't control what's happening around, just calm down and Go With The Flow. Be around people who feel easy. Things will work out but slowly.</p>
+		<p>(And yes… still a little drama, a little cute, a little innocent 😄)</p>
+			<pre class="shayari"> ऐ बुरे वक्त ज़रा अदब से पेश आ,
+	क्योंकि वक्त नहीं लगता वक्त बदलने में |</pre>
                 </div>
                 <div class="image-side">
                     <img src="overthink.jpg" alt="Description">
                 </div>
             </div>
-        </div>
+        </div> </br>
 
         <div class="support-subsection">
             <div class="content-row">
                 <div class="text-side">
                     <h3 style="margin-bottom: 12px;">When you feel low</h3>
-                    <p>This wave will pass. It always does.</p>
-                    <p>You're allowed to just be, without fixing. Small steps. Coffee. A walk. That's plenty.</p>
+                    <p>Whenever it feels heavy… just remember: 'Kya ho gaya Dhondiiiii?'</p>
+                    <p>There are days when it feels low it's completely OK. Sometimes all you need is a small reset.</br></br>
+And if nothing works… Mata is always there &#128513;</p>
                 </div>
                 <div class="image-side">
                     <img src="feelinglow.jpg" alt="Description">
                 </div>
             </div>
-        </div>
+        </div> </br>
 
         <div class="support-subsection">
             <div class="content-row">
                 <div class="text-side">
                     <h3 style="margin-bottom: 12px;">When you miss me</h3>
                     <p>It's okay to feel that. Memories don't need to be pushed away.</p>
-                    <p>Let it sit, then let it go when ready.</p>
+                    <p>There are a lot of memories we made together. Let it sit, feel and go when ready.</p>
+			</br>
+			<p>There are some memories that feel light… even when they pass.</p>
                 </div>
                 <div class="image-side">
                     <img src="missing.jpg" alt="Description">
                 </div>
             </div>
-        </div>
+        </div> </br>
 
         <div class="support-subsection">
             <div class="content-row">
                 <div class="text-side">
                     <h3 style="margin-bottom: 12px;">When you can't sleep</h3>
-                    <p>Close your eyes. Name three things you see in the dark.</p>
-                    <p>Your breath is steady. Follow it. Tomorrow is new. Rest now.</p>
+                    <p>I still remember those nights when I can't sleep due to home loneliness and you stayed on VC.</p>
+			<p>Keep your phone aside and close your eyes.</br>
+			Your breath is steady. Follow it. Tomorrow is new. Rest now. &#128564;&#128164;</p>
                 </div>
                 <div class="image-side">
                     <img src="Sleep.png" alt="Description">
@@ -283,11 +423,15 @@
         <h2>Things I Don't Say Often</h2>
         <div class="content-row">
             <div class="text-side">
-                <p>I'm proud of how you carry your depth. Quietly, but fully.</p>
+                <p>I'm proud of you.</br>
+		The way you help people, </br>
+		the way you handle things,</br>
+		and the effort you put into everything you do.</br></p>
                 <p>You've taught me more about patience than anyone.</p>
+		<p>You are such a nice person to me I have ever met. You tried so hard to make me smile but - kya karu face hi aisa hai &#128517;
             </div>
         </div>
-        <p>I hope life gives you back the gentleness you give.</p>
+        <p>I hope life gives you back the gentleness you give. Stay healthy and wealthy with complete family.</p>
     </section>
 
     <!-- EXPECTATIONS -->
@@ -299,10 +443,88 @@
                 <p>This is just me sharing, peacefully. For you to have if it helps.</p>
             </div>
         </div>
-        <p style="font-style: italic; color: var(--text-secondary); font-size: 1.12em;">
-            Take care. Always.
+        <p>
+	<div style="text-align:center; margin-top: 40px;">
+    	<button class="soft-btn" onclick="openPopup()">Before You Go…</button>
+	</div>
         </p>
     </section>
 
+	<div id="popupOverlay" class="popup-overlay">
+    <div class="popup-box">
+        <p>
+    I don't know if it changes anything…<br><br>
+
+    but if it made you pause for even a moment,<br>
+    that’s enough.<br>
+	
+<pre class="shayari"> ग़ालिब उम्र भर यह भूल करता रहा,
+ धूल आईने पर थी वह चेहरा साफ करता रहा</pre>
+
+    Take care of yourself. That matters more than anything else.
+</p>
+
+        <button class="soft-btn" onclick="closePopup()">Close</button>
+    </div>
+	</div>
+
+
+<script>
+const birthday = new Date("2026-05-24T00:00:00"); // 🔥 CHANGE THIS
+function updateCountdown() {
+    const now = new Date();
+    const diff = birthday - now;
+
+    if (diff <= 0) {
+        document.getElementById("countdown").innerHTML = "It's her birthday 🎉";
+        return;
+    }
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("days").innerText = days;
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+    document.getElementById("seconds").innerText = seconds;
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+function openPopup() {
+    document.getElementById("popupOverlay").style.display = "flex";
+}
+
+function closePopup() {
+    document.getElementById("popupOverlay").style.display = "none";
+}
+
+// optional: close when clicking outside
+document.getElementById("popupOverlay").addEventListener("click", function(e) {
+    if (e.target === this) {
+        closePopup();
+    }
+});
+
+// Scroll fading
+const sections = document.querySelectorAll('.section');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+sections.forEach(section => {
+    observer.observe(section);
+});
+
+</script>
 </body>
 </html>
